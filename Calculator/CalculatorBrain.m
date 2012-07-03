@@ -65,6 +65,7 @@
             result = 0;
         }
     } else if ([@"-" isEqualToString:operation]) {
+        // Good idea
         // Negate the 1st operand popped to achieve proper order
         result = -[self popOperand] + [self popOperand];
     } else if ([@"sin" isEqualToString:operation]) {
@@ -72,10 +73,14 @@
     } else if ([@"cos" isEqualToString:operation]) {
         result = cos([self popOperand]);
     } else if ([@"sqrt" isEqualToString:operation]) {
+        
+        // should have protect against minus number
         result = sqrt([self popOperand]);
     } else if ([@"π" isEqualToString:operation]) {
         result = M_PI;
     } else if ([@"+/-" isEqualToString:operation]) {
+        
+        // maybe you don't want -0
         result = -[self popOperand];
     }
 

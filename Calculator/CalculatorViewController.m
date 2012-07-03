@@ -38,6 +38,9 @@
 
 - (IBAction)digitPressed:(UIButton *)sender
 {
+    // current logic would not easly support localization string
+    // it is better to avoid to use currentTitle in logic check, in order to better support localization string
+    
     NSString *digit = sender.currentTitle;
     if (self.userIsInTheMiddleOfEnteringANumber) {
         // If we are already displaying just one 0, we replace it with whatever digit we typed
@@ -73,8 +76,10 @@
 
 }
 
+// no protection for -0
 - (IBAction)negateNumber
 {
+    
     // Remove any prior =
     self.brainInputDisplay.text = [self.brainInputDisplay.text stringByReplacingOccurrencesOfString:@"= " withString:@""];
 
